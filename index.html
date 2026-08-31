@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARTEM OVSIIENKO — UI/UX Designer</title>
+  
+  <!-- Google Fonts: Arsenal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo-wrapper">
+      <a href="index.html" class="logo">Artem Ovsiienko</a>
+      <a href="tel:+380994829566" class="header-phone">+380 (99) 482-95-66</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="nav-menu" id="navMenu">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#work" class="nav-link">Case Studies</a>
+      <a href="#archive" class="nav-link">Earlier Work</a>
+      <a href="#contacts" class="nav-link">Contacts</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="about" class="hero section section-hero">
+    <div class="hero-container">
+      
+      <!-- Mobile Top Text Wrapper -->
+      <div class="hero-header-mobile">
+        <h1 class="hero-title">ARTEM OVSIIENKO</h1>
+        <p class="hero-lead">UI/UX Designer with 2+ years of experience in logistics tech.</p>
+      </div>
+
+      <!-- Profile Photo -->
+      <div class="hero-img-wrapper">
+        <img src="Media/profile.png" alt="Artem Ovsiienko" class="hero-photo" />
+      </div>
+
+      <!-- Desktop Content & Mobile Bullet List Column -->
+      <div class="hero-text">
+        <div class="hero-header-desktop">
+          <h1 class="hero-title">ARTEM OVSIIENKO</h1>
+          <p class="hero-lead">UI/UX Designer with 2+ years of experience in logistics tech.</p>
+        </div>
+        
+        <ul class="custom-list">
+          <li>Focused on <b>data-heavy interfaces</b>, such as tables, forms, and filters within a <b>CRM</b> system.</li>
+          <li>Designing complex <b>design system</b> for CRM products, using <b>Figma Variables</b> and reusable components.</li>
+          <li>Involved in designing a <b>mobile app</b> for truck drivers, from user flows to high-fidelity UI.</li>
+          <li>Also work on various design tasks, including product <b>websites, brand identity, brandbooks</b> and digital advertising materials.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Case Studies (Elevated Lighter Dark Section) -->
+  <section id="work" class="section-elevated-wrapper">
+    <div class="section">
+      <div class="section-header">
+        <h2>Featured Case Studies</h2>
+        <p class="nda-text">Currently working on logistics products including a CRM and driver's mobile application. Due to NDA restrictions, these products cannot be publicly showcased.</p>
+        <p class="sub-text">You can explore one of my publicly available projects below.</p>
+      </div>
+
+      <div class="cards-grid">
+        
+        <!-- Case 1: Sierra Logistics Group -->
+        <a href="sierralogisticgroup.html" class="card card-full">
+          <img src="Media/sierra_preview_BG.webp" alt="Sierra Logistics Background" class="card-bg-img" />
+          
+          <div class="card-visual">
+            <img src="Media/sierra_preview_mockup.png" alt="Sierra Logistics Mockup" class="card-mockup-img" />
+          </div>
+          
+          <div class="card-glass-holder">
+            <div class="card-glass-header">
+              <h3>Sierra Logistics Group</h3>
+              <span class="card-year">2026</span>
+            </div>
+            
+            <div class="tag-group">
+              <span class="card-tag">website</span>
+              <img src="Media/diamond2.svg" alt="" class="tag-diamond" />
+              <span class="card-tag">landing page</span>
+              <img src="Media/diamond2.svg" alt="" class="tag-diamond" />
+              <span class="card-tag">AI coding</span>
+            </div>
+            
+            <p class="card-desc">A responsive landing page for a US brokerage company, designed to present complex logistics services through clear information architecture.</p>
+          </div>
+        </a>
+
+        <!-- Case 2: FleetPro -->
+        <a href="fleetpro.html" class="card card-full">
+          <img src="Media/fleetpro_preview_BG.webp" alt="FleetPro Background" class="card-bg-img" />
+          
+          <div class="card-visual">
+            <img src="Media/fleetpro_preview_mockup.png" alt="FleetPro Mockup" class="card-mockup-img" />
+          </div>
+          
+          <div class="card-glass-holder">
+            <div class="card-glass-header">
+              <h3>FleetPro websites</h3>
+              <span class="card-year">2025-2026</span>
+            </div>
+            
+            <div class="tag-group">
+              <span class="card-tag">website</span>
+              <img src="Media/diamond2.svg" alt="" class="tag-diamond" />
+              <span class="card-tag">design system</span>
+              <img src="Media/diamond2.svg" alt="" class="tag-diamond" />
+              <span class="card-tag">brand identity</span>
+            </div>
+            
+            <p class="card-desc">A unified design system and two responsive websites for FleetPro’s Warehousing and Truck Center divisions, including brand identity and visual guidelines.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Earlier Work Section -->
+  <section id="archive" class="section section-no-frame">
+    <div class="section-header">
+      <h2>Earlier Work</h2>
+      <p class="earlier-work-intro">Selected work created before entering the professional UI/UX field.</p>
+    </div>
+    
+    <div class="cards-grid cards-grid-two">
+      
+      <!-- Earlier Project 1: SankaTravel -->
+      <a href="sankatravel.html" class="card card-stacked">
+        <img src="Media/sankatravel_preview_BG.webp" alt="SankaTravel Background" class="card-bg-img" />
+        
+        <div class="card-visual-top">
+          <img src="Media/sankatravel_preview_mockup.png" alt="SankaTravel Mockup" class="card-mockup-img" />
+        </div>
+        
+        <div class="card-glass-holder">
+          <div class="card-glass-header">
+            <h3>SankaTravel website</h3>
+          </div>
+          
+          <div class="tag-group">
+            <span class="card-tag">landing page</span>
+            <img src="Media/diamond2.svg" alt="" class="tag-diamond" />
+            <span class="card-tag">ui kit</span>
+          </div>
+          
+          <p class="card-desc">A simple landing page concept for a mountain tour guide, designed to showcase upcoming trips, past adventures, customer reviews, and the experience behind the tours.</p>
+        </div>
+      </a>
+
+      <!-- Earlier Project 2: Gas Station Mobile App -->
+      <a href="gasstation.html" class="card card-stacked">
+        <img src="Media/gasstation_preview_BG.webp" alt="Gas Station App Background" class="card-bg-img" />
+        
+        <div class="card-visual-top">
+          <img src="Media/gasstation_preview_mockup.png" alt="Gas Station App Mockup" class="card-mockup-img" />
+        </div>
+        
+        <div class="card-glass-holder">
+          <div class="card-glass-header">
+            <h3>Gas Station mobile app</h3>
+          </div>
+          
+          <div class="tag-group">
+            <span class="card-tag">mobile</span>
+            <img src="Media/diamond2.svg" alt="" class="tag-diamond" />
+            <span class="card-tag">CJM</span>
+            <img src="Media/diamond2.svg" alt="" class="tag-diamond" />
+            <span class="card-tag">concept testing</span>
+            <img src="Media/diamond2.svg" alt="" class="tag-diamond" />
+            <span class="card-tag">ui kit</span>
+          </div>
+          
+          <p class="card-desc">An MVP mobile app concept for a fuel station network, developed through customer journey mapping, concept testing, low-fidelity prototyping, and a structured UI kit.</p>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Certificate Sub-Header -->
+    <div class="section-header" style="margin-top: 3.5rem; margin-bottom: 2rem;">
+      <h2>Certificate</h2>
+    </div>
+
+    <!-- Full-Width Education Card -->
+    <a href="https://certificate.ithillel.ua/view/83873101" class="card card-full card-education js-modal-trigger">
+      <img src="Media/certificate_BG.webp" alt="Education Certificate Background" class="card-bg-img" />
+      
+      <div class="card-visual">
+        <img src="Media/certificate.png" alt="Hillel IT School Certificate Preview" class="card-mockup-img" />
+      </div>
+      
+      <div class="card-glass-holder">
+        <div class="card-glass-header">
+          <h3><span class="card-title-rose">EDUCATION:</span> HILLEL IT SCHOOL</h3>
+          <span class="card-year">2023-2024</span>
+        </div>
+        
+        <p class="card-desc">UI / UX Designer Pro course</p>
+      </div>
+    </a>
+  </section>
+
+  <!-- Contacts Section (Elevated Lighter Dark Section) -->
+  <section id="contacts" class="section-elevated-wrapper">
+    <div class="section contact-section-clean">
+      <div class="section-header">
+        <h2>Contacts</h2>
+      </div>
+
+      <div class="contact-grid-two">
+        
+        <!-- Left Column: Contact Links -->
+        <div class="contact-list">
+          
+          <a href="tel:+380994829566" class="contact-item">
+            <img src="Media/phone.svg" alt="Phone" class="contact-icon" />
+            <span>+380 (99) 482-95-66</span>
+          </a>
+
+          <a href="mailto:rtemo.design@gmail.com" class="contact-item">
+            <img src="Media/email.svg" alt="Email" class="contact-icon" />
+            <span>rtemo.design@gmail.com</span>
+          </a>
+
+          <a href="https://t.me/artemios_o" target="_blank" rel="noopener" class="contact-item">
+            <img src="Media/telegram.svg" alt="Telegram" class="contact-icon" />
+            <span>@artemios_o</span>
+          </a>
+
+          <a href="https://wa.me/380994829566" target="_blank" rel="noopener" class="contact-item">
+            <img src="Media/whatsapp.svg" alt="WhatsApp" class="contact-icon" />
+            <span>+380 (99) 482-95-66</span>
+          </a>
+
+          <a href="https://linkedin.com/in/artemovsiienko" target="_blank" rel="noopener" class="contact-item">
+            <img src="Media/linkedin.svg" alt="LinkedIn" class="contact-icon" />
+            <span>in/artemovsiienko</span>
+          </a>
+
+        </div>
+
+        <!-- Right Column: Stacked CV Card -->
+        <a href="Media/CV_Artem_Ovsiienko.pdf" download class="card card-stacked card-cv">
+          <img src="Media/cv_BG.webp" alt="CV Background" class="card-bg-img" />
+          
+          <div class="card-visual-top">
+            <img src="Media/download.svg" alt="Download Icon" class="card-corner-icon" />
+            <img src="Media/cv.png" alt="CV Preview" class="card-mockup-img" />
+          </div>
+          
+          <div class="card-glass-holder card-glass-holder-cv">
+            <h3 class="cv-title-centered">DOWNLOAD CV</h3>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- External Certificate Link Confirmation Modal -->
+  <div id="modalOverlay" class="modal-overlay" role="dialog" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <h3 id="modalTitle">Leaving Portfolio</h3>
+      <p>You're about to leave my portfolio and visit an external website where my certificate is hosted.</p>
+      <div class="modal-actions">
+        <button id="modalCancel" class="btn btn-modal-cancel">Cancel</button>
+        <a id="modalConfirm" href="#" target="_blank" rel="noopener" class="btn btn-modal-confirm">Continue →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p class="footer-text">2026 ARTEM OVSIIENKO. Hosted on GitHub Pages.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
