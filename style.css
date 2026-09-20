@@ -1122,6 +1122,9 @@ footer {
     display: inline-block !important;
     color: #8C8C8C !important;
   }
+  .nav-link-cv:hover {
+    color: #B4B4B4 !important;
+  }
   .bar {
     background-color: #8C8C8C !important;
   }
@@ -1131,23 +1134,39 @@ footer {
   .btn-back-nav .back-arrow-icon {
     stroke: #8C8C8C !important;
   }
+  .btn-back-nav:hover .back-arrow-icon {
+    stroke: #B4B4B4 !important;
+  }
   .nav-menu {
     width: 100%;
     order: 3;
     flex-direction: column;
-    padding: 1.5rem 0 0.5rem;
-    margin-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    align-items: flex-end !important;
+    text-align: right;
+    padding: 0;
+    margin-top: 0;
+    border-top: 1px solid transparent;
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     box-shadow: none;
     position: static;
-    display: none;
+    display: flex !important;
     gap: 1.25rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin-top 0.3s ease, padding 0.3s ease, border-color 0.3s ease;
+    pointer-events: none;
   }
   .nav-menu.active { 
-    display: flex !important; 
+    max-height: 320px;
+    opacity: 1;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-top-color: rgba(255, 255, 255, 0.12);
+    pointer-events: auto;
   }
   .hero-sticky-wrapper {
     height: 100vh;
@@ -1226,12 +1245,9 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 30px;
     padding: 0.6rem 1.1rem;
-    color: #8C8C8C;
     font-size: 0.8rem;
-    font-weight: 700;
-    align-items: center;
     gap: 0.5rem;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   }
   .external-icon {
     width: 14px;
