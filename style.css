@@ -56,6 +56,8 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   height: 100%;
   display: flex;
   align-items: flex-end;
+  position: relative;
+  z-index: 3;
 }
 .section-no-frame {
   background: transparent;
@@ -279,15 +281,40 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background-color: #c8c8c8; 
+  background-color: #e5e5e5; 
   background-image: 
     radial-gradient(circle at 18% 18%, #ffffff 0%, transparent 42%),
-    radial-gradient(circle at 82% 82%, #a8a8a8 0%, transparent 52%),
-    radial-gradient(circle at 50% 30%, #ededed 0%, transparent 45%),
-    radial-gradient(circle at 85% 15%, #f9f9f9 0%, transparent 35%),
-    radial-gradient(circle at 15% 85%, #b5b5b5 0%, transparent 48%);
+    radial-gradient(circle at 82% 82%, #c8c8c8 0%, transparent 52%),
+    radial-gradient(circle at 50% 30%, #f9f9f9 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, #ffffff 0%, transparent 35%),
+    radial-gradient(circle at 15% 85%, #d2d2d2 0%, transparent 48%);
   overflow: hidden;
+  perspective: 1200px;
 }
+.hero-ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+.ui-float {
+  position: absolute;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+.ui-m { display: none; }
+.ui-1 { width: clamp(160px, 15vw, 246px); top: 11%; left: 8%; transform-origin: center; }
+.ui-2 { width: clamp(250px, 24vw, 424px); top: 15%; left: 34%; transform-origin: center; }
+.ui-3 { width: clamp(180px, 18vw, 316px); top: 18%; right: 20%; transform-origin: center; }
+.ui-4 { width: clamp(160px, 15vw, 272px); top: 19%; right: 4%; transform-origin: center; }
+.ui-5 { width: clamp(260px, 25vw, 440px); bottom: 6%; right: 2%; transform-origin: center; }
+.ui-7 { width: clamp(300px, 35vw, 642px); bottom: 8%; right: 30%; transform-origin: center; }
+.ui-8 { width: clamp(180px, 20vw, 307px); bottom: 10%; left: 3%; transform-origin: center; }
+
 .hero-container {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -320,12 +347,12 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   font-size: 8.25rem;
 }
 .index-page .hero-title {
-  font-size: clamp(2.8rem, 8.5vh, 8.25rem) !important;
+  font-size: clamp(3.5rem, 11vh, 10.5rem) !important;
   line-height: 0.98;
   color: #191919 !important;
 }
 .index-page .hero-lead {
-  font-size: clamp(1.5rem, 4.2vh, 4.5rem) !important;
+  font-size: clamp(2rem, 5.5vh, 6rem) !important;
   font-weight: 700;
   line-height: 1.05;
   color: #2B1111 !important;
@@ -1050,6 +1077,15 @@ footer {
   .case-title { font-size: 3.5rem; }
   .carousel-slide { flex: 0 0 calc(75vw - 2rem); max-width: 75vw; }
 }
+@media (min-width: 769px) and (max-width: 992px) {
+  .ui-1 { width: clamp(160px, 15vw, 246px); top: 30%; left: 10%; transform-origin: center; }
+  .ui-2 { width: clamp(250px, 24vw, 424px); top: 20%; right: 5%; left: auto; transform-origin: center; }
+  .ui-3 { width: clamp(180px, 18vw, 316px); top: 50%; right: 10%; transform-origin: center; }
+  .ui-4 { display: none !important; }
+  .ui-5 { width: clamp(260px, 25vw, 440px); bottom: 6%; right: 2%; transform-origin: center; }
+  .ui-7 { display: none !important; }
+  .ui-8 { width: clamp(180px, 20vw, 307px); bottom: 10%; left: 3%; transform-origin: center; }
+}
 @media (max-width: 992px) {
   h2 { font-size: 2.5rem; }
   .card-full { grid-template-columns: 1fr; }
@@ -1107,6 +1143,17 @@ footer {
   .contact-icon { width: 22px; height: 22px; }
   .uikit-grid-two { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 768px) {
+  .ui-d { display: none !important; }
+  .ui-m { display: block; }
+  .ui-m1 { width: clamp(140px, 28vw, 219px); top: 25%; left: 5%; }
+  .ui-m2 { width: clamp(180px, 40vw, 306px); top: 50%; right: 0; }
+  .ui-m3 { width: clamp(160px, 32vw, 250px); top: 25%; right: 0; }
+  .ui-m4 { width: clamp(100px, 21vw, 163px); top: 60%; left: 3%; }
+  .ui-m5 { width: clamp(200px, 42vw, 318px); top: 70%; right: 0; }
+}
+
 @media (max-width: 576px) {
   h2 { font-size: 2rem; }
   .case-title { font-size: 2.25rem; }
