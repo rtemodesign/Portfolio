@@ -1351,13 +1351,20 @@ footer {
   .custom-list li { text-align: left; }
   .card-stacked { min-height: auto; }
   .card-visual-top { height: 260px; }
+  
+  /* === MOBILE CARD ILLUSTRATION SIZE OVERRIDE === */
+  .card-mockup-img,
+  .card-visual-top .card-mockup-img {
+    transform: scale(1) !important;
+  }
+
   .case-nav-right { flex-direction: row; align-items: center; gap: 0.5rem; }
   .contact-list { flex-direction: column; align-items: flex-start; justify-content: flex-start; width: 100%; gap: 1.25rem; }
   .contact-item { justify-content: flex-start; width: 100%; font-size: 1.1rem; }
   .contact-icon { width: 22px; height: 22px; }
   .uikit-grid-two { grid-template-columns: 1fr; }
 
-  /* === MOBILE TOOLS I USE OVERRIDES === */
+  /* === MOBILE STATIC TOOLS I USE OVERRIDES === */
   .tools-columns-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1401,35 +1408,28 @@ footer {
     flex-shrink: 0;
   }
 
-  /* Tooltip in Mobile Document Flow (Pushing items down) */
+  /* Static Mobile Tooltips - No Animations, Always Fully Rendered */
   .tool-tooltip,
   .tooltip-right,
   .tooltip-left {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    right: auto;
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
     transform: none !important;
     flex: 1;
     min-width: 0;
     max-width: 100%;
     
-    max-height: 0;
-    opacity: 0;
-    visibility: hidden;
-    padding: 0 1rem;
-    border-width: 0;
-    overflow: hidden;
-    
-    clip-path: inset(0 100% 0 0);
-    transition: 
-      max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 0.4s ease,
-      visibility 0.4s ease,
-      padding 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-      border-width 0.4s ease,
-      clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    padding: 0.85rem 1.1rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    overflow: visible !important;
+    clip-path: none !important;
+    transition: none !important;
   }
 
   .tooltip-right::before,
@@ -1441,39 +1441,17 @@ footer {
     border-width: 7px;
     border-style: solid;
     border-color: transparent rgba(255, 255, 255, 0.15) transparent transparent;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    opacity: 1 !important;
+    transition: none !important;
   }
 
-  /* Scroll Triggered & Hover Active State */
-  .tool-card-item.mobile-active .tool-tooltip,
-  .tool-card-item:hover .tool-tooltip {
-    max-height: 280px;
-    opacity: 1;
-    visibility: visible;
-    padding: 0.85rem 1.1rem;
-    border-width: 1px;
-    clip-path: inset(0 0 0 0);
+  .tooltip-title,
+  .tooltip-list li {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    transition-delay: 0s !important;
   }
-
-  .tool-card-item.mobile-active .tooltip-right::before,
-  .tool-card-item.mobile-active .tooltip-left::before,
-  .tool-card-item:hover .tooltip-right::before,
-  .tool-card-item:hover .tooltip-left::before {
-    opacity: 1;
-  }
-
-  .tool-card-item.mobile-active .tooltip-title,
-  .tool-card-item.mobile-active .tooltip-list li {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .tool-card-item.mobile-active .tooltip-title { transition-delay: 0.18s; }
-  .tool-card-item.mobile-active .tooltip-list li:nth-child(1) { transition-delay: 0.25s; }
-  .tool-card-item.mobile-active .tooltip-list li:nth-child(2) { transition-delay: 0.31s; }
-  .tool-card-item.mobile-active .tooltip-list li:nth-child(3) { transition-delay: 0.37s; }
-  .tool-card-item.mobile-active .tooltip-list li:nth-child(4) { transition-delay: 0.43s; }
-  .tool-card-item.mobile-active .tooltip-list li:nth-child(5) { transition-delay: 0.49s; }
 }
 
 @media (max-width: 768px) {
