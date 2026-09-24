@@ -312,11 +312,11 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   position: absolute;
   will-change: transform, opacity;
   transform-style: preserve-3d;
-  opacity: 0.5;
+  opacity: 0.2;
   transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .ui-float.tagline-active {
-  opacity: 0.9;
+  opacity: 0.7;
 }
 .ui-m { display: none; }
 .ui-1 { width: clamp(160px, 15vw, 246px); top: 11%; left: 8%; transform-origin: center; }
