@@ -33,6 +33,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // === HERO TAGLINE CLICK TO SCROLL TO ABOUT-ME ===
+  const heroTaglines = document.querySelectorAll('.hero-tagline-3d');
+  heroTaglines.forEach(tagline => {
+    tagline.addEventListener('click', () => {
+      const aboutMeSection = document.getElementById('about-me');
+      if (aboutMeSection) {
+        aboutMeSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
   // === DIAGRAM / BRANDBOOK CAROUSEL ===
   const track = document.getElementById('carouselTrack');
   const prevBtn = document.getElementById('prevSlide');
@@ -128,15 +139,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const viewportHeight = window.innerHeight;
-    const topZone = viewportHeight * 0.10;    // Top 10% threshold
-    const bottomZone = viewportHeight * 0.90; // Bottom 10% threshold (90% from top)
+    const topZone = viewportHeight * 0.10;
+    const bottomZone = viewportHeight * 0.90;
 
     const toolItems = document.querySelectorAll('.tool-card-item');
     toolItems.forEach(item => {
       const rect = item.getBoundingClientRect();
       const itemMid = rect.top + rect.height / 2;
 
-      // Active only when in central 10%-90% zone
       if (itemMid >= topZone && itemMid <= bottomZone) {
         item.classList.add('mobile-active');
       } else {
@@ -161,6 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentRotX = 0;
   let currentRotY = 0;
   let gyroActive = false;
+
+  // Slow smooth transition multiplier for Hero elements rotation (12 -> 32)
+  let currentHeroMultiplier = 12;
 
   function handleOrientation(e) {
     if (e.beta === null || e.gamma === null) return;
@@ -193,13 +206,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const isDesktopOrTablet = window.innerWidth > 768;
     const scrollY = window.scrollY;
 
+    let isTaglineHovered = false;
+    heroTaglines.forEach(tagline => {
+      if (tagline.matches(':hover')) {
+        isTaglineHovered = true;
+      }
+    });
+
+    const targetHeroMultiplier = isTaglineHovered ? 32 : 12;
+    currentHeroMultiplier += (targetHeroMultiplier - currentHeroMultiplier) * 0.02;
+
     if (isDesktopOrTablet) {
-      // Hero Elements: Slow Parallax
+      // 1. Hero Floating PNG Elements Parallax
       if (heroUiLayer) {
         const desktopElements = document.querySelectorAll('.ui-d');
-        const scrollOffset = -(scrollY * 0.2); 
+        const scrollOffset = -(scrollY * 0.2);
 
         desktopElements.forEach((el, index) => {
+          if (isTaglineHovered) {
+            el.classList.add('tagline-active');
+          } else {
+            el.classList.remove('tagline-active');
+          }
+
           const rect = el.getBoundingClientRect();
           const elCenterX = rect.left + rect.width / 2;
           const elCenterY = rect.top + rect.height / 2;
@@ -209,14 +238,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const depthMultiplier = 1 + (index * 0.15);
           
-          const rotY = (deltaX / window.innerWidth) * 6 * depthMultiplier;
-          const rotX = -(deltaY / window.innerHeight) * 6 * depthMultiplier;
+          const rotY = (deltaX / window.innerWidth) * currentHeroMultiplier * depthMultiplier;
+          const rotX = -(deltaY / window.innerHeight) * currentHeroMultiplier * depthMultiplier;
           
           el.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateZ(${depthMultiplier * 10}px) translateY(${scrollOffset}px)`;
         });
       }
 
-      // Tools Icons: 12deg Max Rotation + Lerped 120% Scale Zoom
+      // 2. Tools I Use Icons: High-Response Rotation & Lerped 120% Zoom
       toolFloatIcons.forEach((el) => {
         const rect = el.getBoundingClientRect();
         const elCenterX = rect.left + rect.width / 2;
@@ -241,6 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale(${el._currentScale.toFixed(3)}) translateZ(12px)`;
       });
     } else {
+      // Mobile Parallax & Tagline Hover Opacity Sync
       if (heroUiLayer) {
         const mobileElements = document.querySelectorAll('.ui-m');
         const mobileScrollOffset = -(scrollY * 0.2);
@@ -249,6 +279,12 @@ document.addEventListener('DOMContentLoaded', () => {
         currentRotY += (targetRotY - currentRotY) * 0.08;
 
         mobileElements.forEach((el, index) => {
+          if (isTaglineHovered) {
+            el.classList.add('tagline-active');
+          } else {
+            el.classList.remove('tagline-active');
+          }
+
           const depthMultiplier = 1 + (index * 0.1);
           if (gyroActive) {
             el.style.transform = `translateY(${mobileScrollOffset}px) rotateX(${currentRotX * depthMultiplier}deg) rotateY(${currentRotY * depthMultiplier}deg)`;
@@ -265,6 +301,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+
+    // === FIREFLY TRACKING (Viewport Percentage Logic) ===
+    const vpX = (mouseX / window.innerWidth) * 100;
+    const vpY = (mouseY / window.innerHeight) * 100;
+    document.documentElement.style.setProperty('--vp-x', `${vpX}%`);
+    document.documentElement.style.setProperty('--vp-y', `${vpY}%`);
   });
 
   requestAnimationFrame(updateParallax);
