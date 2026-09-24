@@ -145,7 +145,7 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   z-index: 1000;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
   transition: var(--transition);
-  background: rgba(220, 220, 220, 0.15) !important;
+  background: rgba(220, 220, 220, 0.05) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .navbar .logo,
@@ -159,9 +159,6 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
 .navbar .logo:hover,
 .navbar .header-cv-btn:hover {
   color: #C0A5C2 !important;
-}
-.index-page .navbar-home {
-  background: rgba(220, 220, 220, 0.15) !important;
 }
 .logo-wrapper {
   display: flex;
