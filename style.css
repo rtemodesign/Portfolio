@@ -418,10 +418,6 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   border-color: transparent transparent #ffffff transparent;
 }
 
-.tagline-diamond {
-  display: none !important;
-}
-
 .bg2-shadow-caster {
   position: relative;
   z-index: 2;
@@ -736,7 +732,11 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   transition: filter 0.5s ease;
 }
 
-/* === Liquid Glass Tooltip Base === */
+.tool-chevron {
+  display: none;
+}
+
+/* === Liquid Glass Tooltip Base (Desktop) === */
 .tool-tooltip {
   position: absolute;
   top: 50%;
@@ -848,7 +848,6 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   background-size: contain;
 }
 
-/* Staggered Text Entrance */
 .tool-card-item:hover .tooltip-title {
   opacity: 1;
   transform: translateY(0);
@@ -1246,6 +1245,8 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   transform: translateY(-4px);
   border-color: rgba(255, 255, 255, 0.2);
 }
+
+/* === BRANDBOOK CAROUSEL STYLING (Tight Margins & Large Central Slide) === */
 .diagram-carousel-section {
   width: 100%;
   padding: 3rem 0 6rem;
@@ -1277,13 +1278,13 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
 .carousel-track {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 0.85rem; /* Reduced gap between slides */
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 .carousel-slide {
-  flex: 0 0 820px;
-  max-width: 68vw;
+  flex: 0 0 960px; /* Increased width of central slide */
+  max-width: 78vw;
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
@@ -1351,8 +1352,8 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-50%) scale(1.05);
 }
-.prev-btn { left: 2.5rem; }
-.next-btn { right: 2.5rem; }
+.prev-btn { left: 1rem; }  /* Reduced margin to screen edge */
+.next-btn { right: 1rem; } /* Reduced margin to screen edge */
 
 /* === STANDALONE FOOTER SECTION === */
 .footer-section-wrapper {
@@ -1394,7 +1395,7 @@ footer {
   .hero-title { font-size: 6rem; }
   .hero-lead { font-size: 3.5rem !important; }
   .case-title { font-size: 3.5rem; }
-  .carousel-slide { flex: 0 0 calc(75vw - 2rem); max-width: 75vw; }
+  .carousel-slide { flex: 0 0 calc(85vw - 1rem); max-width: 85vw; }
 }
 @media (min-width: 769px) and (max-width: 992px) {
   .ui-1 { width: clamp(160px, 15vw, 246px); top: 30%; left: 10%; transform-origin: center; }
@@ -1405,6 +1406,7 @@ footer {
   .ui-7 { display: none !important; }
   .ui-8 { width: clamp(180px, 20vw, 307px); bottom: 10%; left: 3%; transform-origin: center; }
 }
+
 @media (max-width: 992px) {
   h2 { font-size: 2.5rem; }
   .card-full { grid-template-columns: 1fr; }
@@ -1476,7 +1478,6 @@ footer {
   .card-stacked { min-height: auto; }
   .card-visual-top { height: 260px; }
   
-  /* Mobile Card Illustration Size Override */
   .card-mockup-img,
   .card-visual-top .card-mockup-img {
     transform: scale(1) !important;
@@ -1488,7 +1489,7 @@ footer {
   .contact-icon { width: 22px; height: 22px; }
   .uikit-grid-two { grid-template-columns: 1fr; }
 
-  /* Mobile Static Tools Overrides */
+  /* Mobile Interactive Tools Accordion Overrides */
   .tools-columns-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1508,7 +1509,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 1.25rem;
     width: 100%;
   }
   .tools-icon-grid-triangle .tool-item-bottom {
@@ -1524,6 +1525,7 @@ footer {
     gap: 1rem;
     width: 100%;
     position: relative;
+    cursor: pointer;
   }
 
   .tool-card-icon {
@@ -1532,7 +1534,17 @@ footer {
     flex-shrink: 0;
   }
 
-  /* Static Mobile Tooltips - No Animations */
+  /* Chevron SVG */
+  .tool-chevron {
+    display: block;
+    width: 18px;
+    height: 18px;
+    stroke: #FBCCFF;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0;
+  }
+
+  /* Mobile Accordion Container */
   .tool-tooltip,
   .tooltip-right,
   .tooltip-left {
@@ -1549,32 +1561,73 @@ footer {
     max-height: none !important;
     opacity: 1 !important;
     visibility: visible !important;
-    padding: 0.85rem 1.1rem !important;
+    padding: 0 1.1rem !important;
+    background: rgba(255, 255, 255, 0.04) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    overflow: visible !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
     clip-path: none !important;
-    transition: none !important;
+    transition: border-color 0.35s ease, background-color 0.35s ease !important;
+    box-sizing: border-box;
   }
 
   .tooltip-right::before,
   .tooltip-left::before {
-    top: 20px;
-    left: -14px;
-    right: auto;
-    transform: none;
-    border-width: 7px;
-    border-style: solid;
-    border-color: transparent rgba(255, 255, 255, 0.15) transparent transparent;
-    opacity: 1 !important;
-    transition: none !important;
+    display: none !important;
   }
 
-  .tooltip-title,
+  /* Fixed Height Title Header (Prevents Title Jumping) */
+  .tooltip-title {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 64px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    border-bottom: 1px solid transparent !important;
+    transition: border-color 0.35s ease !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Collapsed List */
+  .tooltip-list {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, padding 0.35s ease !important;
+  }
+
   .tooltip-list li {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
-    transition-delay: 0s !important;
+  }
+
+  /* Expanded State */
+  .tool-card-item.expanded .tool-chevron {
+    transform: rotate(180deg);
+  }
+
+  .tool-card-item.expanded .tooltip-title {
+    border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .tool-card-item.expanded .tooltip-list {
+    max-height: 220px;
+    opacity: 1;
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.85rem !important;
+  }
+
+  .tool-card-item.expanded .tool-tooltip {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
   }
 }
 
@@ -1586,6 +1639,9 @@ footer {
   .ui-m3 { width: clamp(160px, 32vw, 250px); top: 25%; right: 0; }
   .ui-m4 { width: clamp(100px, 21vw, 163px); top: 60%; left: 3%; }
   .ui-m5 { width: clamp(200px, 42vw, 318px); top: 70%; right: 0; }
+  
+  .prev-btn { left: 0.5rem; }
+  .next-btn { right: 0.5rem; }
 }
 
 @media (max-width: 576px) {
