@@ -718,6 +718,10 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   cursor: pointer;
   perspective: 1000px;
   z-index: 1;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  outline: none;
 }
 .tool-card-item:hover {
   z-index: 100;
