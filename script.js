@@ -44,6 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // === MOBILE ACCORDION FOR TOOLS I USE ===
+  const toolCardItems = document.querySelectorAll('.tool-card-item');
+  toolCardItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 992) {
+        item.classList.toggle('expanded');
+      }
+    });
+  });
+
   // === DIAGRAM / BRANDBOOK CAROUSEL ===
   const track = document.getElementById('carouselTrack');
   const prevBtn = document.getElementById('prevSlide');
@@ -172,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentRotY = 0;
   let gyroActive = false;
 
-  // Slow smooth transition multiplier for Hero elements rotation (12 -> 32)
   let currentHeroMultiplier = 12;
 
   function handleOrientation(e) {
@@ -217,7 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
     currentHeroMultiplier += (targetHeroMultiplier - currentHeroMultiplier) * 0.02;
 
     if (isDesktopOrTablet) {
-      // 1. Hero Floating PNG Elements Parallax
       if (heroUiLayer) {
         const desktopElements = document.querySelectorAll('.ui-d');
         const scrollOffset = -(scrollY * 0.2);
@@ -245,7 +253,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      // 2. Tools I Use Icons: High-Response Rotation & Lerped 120% Zoom
       toolFloatIcons.forEach((el) => {
         const rect = el.getBoundingClientRect();
         const elCenterX = rect.left + rect.width / 2;
@@ -270,7 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale(${el._currentScale.toFixed(3)}) translateZ(12px)`;
       });
     } else {
-      // Mobile Parallax & Tagline Hover Opacity Sync
       if (heroUiLayer) {
         const mobileElements = document.querySelectorAll('.ui-m');
         const mobileScrollOffset = -(scrollY * 0.2);
@@ -302,7 +308,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    // === FIREFLY TRACKING (Viewport Percentage Logic) ===
     const vpX = (mouseX / window.innerWidth) * 100;
     const vpY = (mouseY / window.innerHeight) * 100;
     document.documentElement.style.setProperty('--vp-x', `${vpX}%`);
