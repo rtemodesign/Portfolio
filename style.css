@@ -24,6 +24,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Global Responsive Media & Overflow Protection */
+img, picture, video {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Base interactive cleanups */
 a, button, .card, .tool-card-item {
   -webkit-tap-highlight-color: transparent;
@@ -1031,6 +1037,53 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
 .btn-back-nav:hover .back-arrow-icon {
   stroke: #C0A5C2;
 }
+
+/* === CASE STUDY HERO BACKGROUNDS (SIERRA & FLEETPRO) === */
+.case-hero-wrapper {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 9.5rem 1.5rem 5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.case-hero-sierra,
+body.sierra-page .case-hero-wrapper {
+  background-image: 
+    linear-gradient(180deg, rgba(9, 10, 12, 0.6) 0%, rgba(9, 10, 12, 0.85) 100%),
+    url('Media/sierra_preview_BG.webp');
+}
+
+.case-hero-fleetpro,
+body.fleetpro-page .case-hero-wrapper {
+  background-image: 
+    linear-gradient(180deg, rgba(9, 10, 12, 0.6) 0%, rgba(9, 10, 12, 0.85) 100%),
+    url('Media/fleetpro_preview_BG.webp');
+}
+
+.case-hero-wrapper .case-hero-grid {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Smooth transition when followed by diagonal cut wrappers */
+.case-hero-wrapper + .section-elevated-wrapper,
+.case-hero-wrapper + .bg2-shadow-caster,
+.case-hero-wrapper + .main-scrolling-content {
+  position: relative;
+  z-index: 2;
+  margin-top: -80px;
+}
+
 .case-gallery-container {
   width: 100%;
   max-width: 1000px; 
@@ -1040,7 +1093,16 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   flex-direction: column;
   align-items: center; 
   gap: 2.5rem;
+  box-sizing: border-box;
 }
+
+.case-gallery-container img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .case-detail-container {
   width: 100%;
   max-width: 1200px;
@@ -1049,7 +1111,9 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   display: flex;
   flex-direction: column;
   gap: 5rem;
+  box-sizing: border-box;
 }
+
 .case-hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1434,13 +1498,44 @@ footer {
 }
 
 @media (max-width: 992px) {
+  html, body {
+    overflow-x: hidden;
+  }
+
   h2 { font-size: 2.5rem; }
   .card-full { grid-template-columns: 1fr; }
   .cards-grid-two, .contact-grid-two, .case-hero-grid, .comparison-split-wrapper, .outcome-columns-wrapper, .tools-columns-grid { grid-template-columns: 1fr; }
   .new-pages-overlap-container { flex-wrap: wrap; gap: 1.5rem; }
   .new-page-card { flex: 0 0 45%; margin-right: 0; }
   .section, .section-hero, .section-no-frame, .contact-section-clean { padding: 0 1.25rem 2.5rem; }
-  .case-detail-container { padding-top: 7rem; gap: 3.5rem; }
+  
+  /* Mobile Gallery & Case Detail Width Constraints (Fixes GasStation / SankaTravel Image Overflow) */
+  .case-gallery-container {
+    padding: 6rem 1rem 3rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden;
+  }
+  .case-gallery-container img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .case-detail-container {
+    padding: 7rem 1rem 2rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 3.5rem;
+    overflow-x: hidden;
+  }
+  .case-detail-container img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .case-hero-wrapper {
+    padding: 7rem 1.25rem 4rem !important;
+  }
+
   .header-cv-btn { display: none !important; }
   .nav-link-cv { display: inline-block !important; color: #8C8C8C !important; }
   .nav-link-cv:hover { color: #C0A5C2 !important; }
@@ -1668,7 +1763,7 @@ footer {
   }
 
   .card-mobile-header h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--text-primary);
