@@ -1015,6 +1015,160 @@ a { color: var(--accent); text-decoration: none; transition: var(--transition); 
   line-height: 1.4;
 }
 
+/* ==========================================================================
+   CASE STUDY: PROJECT OVERVIEW (3-CARD GRID)
+   ========================================================================== */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.overview-card {
+  position: relative;
+  background-color: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 2.25rem 2rem;
+  min-height: 340px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  cursor: default;
+}
+
+.overview-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.32;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.overview-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.overview-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  margin-bottom: 1.75rem;
+}
+
+.overview-card-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.overview-card-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.overview-step-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--accent-rose);
+  text-transform: uppercase;
+}
+
+.overview-card-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: none;
+}
+
+.overview-list {
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+.overview-list li {
+  color: #f1f5f9;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin-bottom: 0.85rem;
+}
+
+.overview-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* === METAL SHINING SHEEN ANIMATION (VERTICAL, SOFT & SEAMLESS) === */
+.overview-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+background: linear-gradient(
+  90deg,
+  transparent 0%,
+  transparent 40%,
+  rgba(251, 204, 255, 0.02) 10%,
+  rgba(251, 204, 255, 0.08) 15%,
+  rgba(251, 204, 255, 0.16) 20%, /* Peak */
+  rgba(251, 204, 255, 0.08) 25%,
+  rgba(251, 204, 255, 0.02) 30%,
+  transparent 60%,
+  transparent 100%
+);
+  transform: translateX(-100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Consecutive handoff with 0s gap between cards (1.2s sweep each) */
+.overview-card:nth-child(1)::after {
+  animation: overview-sheen 60s linear infinite;
+  animation-delay: 0s;
+}
+
+.overview-card:nth-child(2)::after {
+  animation: overview-sheen 60s linear infinite;
+  animation-delay: 0.3s;
+}
+
+.overview-card:nth-child(3)::after {
+  animation: overview-sheen 60s linear infinite;
+  animation-delay: 0.6s;
+}
+
+@keyframes overview-sheen {
+  0% {
+    transform: translateX(-100%);
+  }
+  1% {
+    transform: translateX(100%);
+  }
+  1.0001%, 100% {
+    transform: translateX(-100%);
+  }
+}
+
 /* === FULL-WIDTH SECTIONS FIXED TO AVOID HORIZONTAL SCROLL === */
 .section-elevated-wrapper {
   width: 100%;
@@ -1944,6 +2098,16 @@ footer {
   .new-page-card { flex: 0 0 45%; margin-right: 0; }
   .section, .section-hero, .section-no-frame, .contact-section-clean { padding: 0 1.25rem 2.5rem; }
 
+  /* Case study overview mobile layout */
+  .overview-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .overview-card {
+    min-height: auto;
+    padding: 1.75rem 1.5rem;
+  }
+
   /* Constrain grid column to 100% of viewport container */
   .focus-grid {
     grid-template-columns: minmax(0, 1fr) !important;
@@ -1998,7 +2162,7 @@ footer {
     padding: 0 !important;
     min-height: auto !important;
     height: auto !important;
-    overflow: hidden !important; /* CRITICAL: Prevents carousel content from expanding card width */
+    overflow: hidden !important;
     box-sizing: border-box !important;
   }
 
